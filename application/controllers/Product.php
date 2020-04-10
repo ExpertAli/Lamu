@@ -52,7 +52,7 @@ class Product extends CI_Controller
            // redirect(base_url().'login/forgot');
               $data = "";
                $config['upload_path']          = './uploads/';
-               $config['allowed_types']        = 'gif|jpg|png|webp';
+               $config['allowed_types']        = 'gif|jpg|jpeg|png|webp';
               // $config['max_size']             = 1000;
                // $config['max_width']            = 1024;
                // $config['max_height']           = 768;
@@ -115,7 +115,7 @@ class Product extends CI_Controller
                     $_FILES['pics']['size']= $myfiles['pics']['size'][$i];
 
                      $config['upload_path']          = './uploads/';
-                     $config['allowed_types']        = 'gif|jpg|png|webp';
+                     $config['allowed_types']        = 'gif|jpg|jpeg|png|webp';
                     // $config['max_size']             = 1000;
                      // $config['max_width']            = 1024;
                      // $config['max_height']           = 768;
@@ -175,7 +175,7 @@ class Product extends CI_Controller
       if($_SESSION['role']=='Client'){ redirect('shop/index');}
       redirect('product/view');
     }
-    
+
     public function view(){
         $data['records'] = $this->read_model->product();
         $this->load->view('resources/header');
@@ -200,7 +200,7 @@ class Product extends CI_Controller
       $this->load->view('admin/products/view',$data);
       $this->load->view('resources/footer');
     }
-    
+
     public function update($id){
       $this->form_validation->set_rules('name','Product Name','trim|required|min_length[3]|max_length[100]');
       $this->form_validation->set_rules('price','Product Price','trim|required');

@@ -1,20 +1,10 @@
-<div class="containe-fluid px-3 ">
-	<!-- <div class="row">
-		<div class="col-lg-3 d-none d-lg-block">
-			<ul class="list-group">
-				<li class="list-group-item btn btn-outline-primary">Furnitures</li>
-			</ul>
-		</div>
-		<div class="col-lg-8">
-			Home Some quick example text to build on the card title and make up the bulk of the card's content.
-		</div>
-	</div> -->
-	<!-- products -->
+<div class="containe-fluid px-3 bg-light">
+
 	<h2 class="text-info text-center">Products</h2>
 	<?php  //print_r($products);?>
 	<?php //print_r($images);?>
 	<hr>
-	<?php 
+	<?php
 //	print_r($categories);
 // print_r($cats);
     foreach($cats as $ct){
@@ -37,7 +27,7 @@
 	?>
 	<div class="row px-2 mx-auto justify-content-center">
 	<?php //$categories=array_unique($products[0]['category']); print_r($categories);?>
-	
+
 	<!--<?php foreach ($products as $k): ?>-->
 	<!--	<div class="card col-md-3 px-0 m-1" >-->
 	<!--	    <img src="<?php echo base_url().'uploads/'.$k['image_name'];?>" height="200px" >-->
