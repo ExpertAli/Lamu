@@ -1,15 +1,32 @@
 <div class="row py-2 px-3">
-    <div class="col-12 col-md-6 pl-5">
+    <div class="col-12 col-md-4 pl-5 ">
       <h1 class="font-weight-bold text-primary">Lamu Delivery</h1>
     </div>
-    <div class="col-12 col-md-6">
-      <ul class="nav justify-content-center">
-        <li class="nav-item">A</li>
-        <li class="nav-item">B</li>
-      <ul>
+    <div class="col-12 col-md-8 ">
+      <div class="row align-items-center">
+        <div class="col-8 pt-2">
+         <?php echo form_open('shop/checkout','class="row"'); ?>
+            <div class="col-10 pr-0 form-group">
+              <input type="search" name="product_search" class="form-control" placeholder="Search">
+            </div>
+            <div class="col-2 px-0 form-group">
+              <button type="submit" class="btn btn-info"><img src="<?php echo base_url().'uploads/icons/facebook.svg';?>" /></button>
+            </div>
+
+          </form>
+        </div>
+        <div class="col-4">
+          <ul class="nav justify-content-center ">
+            <li class="nav-item"><img src="<?php echo base_url().'uploads/icons/facebook.svg';?>" /></li>
+            <li class="nav-item"><img src="<?php echo base_url().'uploads/icons/facebook.svg';?>" /></li>
+          <ul>
+        </div>
+      </div>
+      
     </div>
 </div>
 <nav class="navbar navbar-dark bg-primary navbar-expand-md text-white sticky-top">
+  
     <div class="container">
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse mx-lg-5 text-center" id="navcol-1">

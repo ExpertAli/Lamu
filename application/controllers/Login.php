@@ -4,21 +4,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller
 {
 
-			public function __construct()
-         {
-                 parent::__construct();
-                 $this->load->model('create_model');
-				 $this->load->model('search_model');
-				 $this->load->model('read_model');
-				  $this->load->model('update_model');
-
-         }
+	public function __construct(){
+	     parent::__construct();
+	     $this->load->model('create_model');
+		 $this->load->model('search_model');
+		 $this->load->model('read_model');
+		  $this->load->model('update_model');
+    }
          
-         public function isOnline(){
-   if(empty($_SESSION['role'])){
-     redirect('login/index');
-   }
- }
+     public function isOnline(){
+	   if(empty($_SESSION['role'])){ redirect('login/index'); }
+	 }
 
 	public function index()
 	{
@@ -26,44 +22,43 @@ class Login extends CI_Controller
 		$this->form_validation->set_rules('email','Email','trim|required|valid_email|htmlspecialchars');
 		$this->form_validation->set_rules('password','Password','trim|required|htmlspecialchars');
 		$this->form_validation->set_error_delimiters('<span class="alert alert-danger px-2">', '</span>');
-		  	if ($this->form_validation->run() == FALSE)
-				 {
-					 $this->load->view('resources/header');
-					 $this->load->view('resources/navbar');
-					 $this->load->view('authenticate/login');
-					 $this->load->view('resources/footer');
+  	if ($this->form_validation->run() == FALSE)
+		 {
+			 $this->load->view('resources/header');
+			 $this->load->view('resources/navbar');
+			 $this->load->view('authenticate/login');
+			 $this->load->view('resources/footer');
 
-				 }else{
-					 //login authentication
-					 $result = $this->search_model->checkEmail('client');
-					 if($result){
-								 if(password_verify($this->input->post('password'), $result->password)){
-												 $userdata = array(
-															 'id' => $result->id,
-															 'fullname' => $result->fullname,
-															 'status' => $result->status,
-															 'role' => 'Client'
-														 );
-										 $this->session->set_userdata($userdata);
-										 //insert login values to db
-									 // $this->login_model->logging();
-										 if(isset($_SESSION['redirect'])){
+		 }else{
+			 //login authentication
+			 $result = $this->search_model->checkEmail('client');
+			 if($result){
+					 if(password_verify($this->input->post('password'), $result->password)){
+						 $userdata = array(
+									 'id' => $result->id,
+									 'fullname' => $result->fullname,
+									 'status' => $result->status,
+									 'role' => 'Client'
+								 );
+						 $this->session->set_userdata($userdata);
+							 //insert login values to db
+						 // $this->login_model->logging();
+							 if(isset($_SESSION['redirect'])){
 
-											 redirect(base_url().$_SESSION['redirect']);
-										 }
-										 redirect('shop/cart');
-								 }else{
-									 $this->session->set_flashdata('feedback', 'Pleace check your Password!');
-									 redirect(base_url().'login/index');
-								 }
-
+								 redirect(base_url().$_SESSION['redirect']);
+							 }
+							 redirect('shop/cart');
 					 }else{
-
-							$this->session->set_flashdata('feedback', 'Wrong Email and Password!');
-							redirect(base_url().'login/index');
+						 $this->session->set_flashdata('feedback', 'Pleace check your Password!');
+						 redirect(base_url().'login/index');
 					 }
-				 }
 
+			 }else{
+
+					$this->session->set_flashdata('feedback', 'Wrong Email and Password!');
+					redirect(base_url().'login/index');
+			 }
+		 }
 
 	}
 	public function logout(){
@@ -214,25 +209,24 @@ class Login extends CI_Controller
 					 //login authentication
 					 $result = $this->search_model->checkEmail('user');
 					 if($result){
-								 if(password_verify($this->input->post('password'), $result->password)){
-												 $userdata = array(
-															 'id' => $result->id,
-															 'fullname' => $result->fullname,
-															
-															 'role' => 'Admin'
-														 );
-										 $this->session->set_userdata($userdata);
-										 //insert login values to db
-									 // $this->login_model->logging();
-										 if(isset($_SESSION['redirect'])){
+							 if(password_verify($this->input->post('password'), $result->password)){
+											 $userdata = array(
+														 'id' => $result->id,
+														 'fullname' => $result->fullname,
+														 'role' => 'Admin'
+													 );
+									 $this->session->set_userdata($userdata);
+									 //insert login values to db
+								 // $this->login_model->logging();
+									 if(isset($_SESSION['redirect'])){
 
-											 redirect(base_url().$_SESSION['redirect']);
-										 }
-										 redirect('admin/index');
-								 }else{
-									 $this->session->set_flashdata('feedback', 'Pleace check your Password!');
-									 redirect(base_url().'login/admin');
-								 }
+										 redirect(base_url().$_SESSION['redirect']);
+									 }
+									 redirect('admin/index');
+							 }else{
+								 $this->session->set_flashdata('feedback', 'Pleace check your Password!');
+								 redirect(base_url().'login/admin');
+							 }
 
 					 }else{
 

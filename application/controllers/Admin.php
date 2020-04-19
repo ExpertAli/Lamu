@@ -12,11 +12,11 @@ class Admin extends CI_Controller
        $this->load->model('update_model');
        $this->isOnline();
     }
- public function isOnline(){
-   if(empty($_SESSION['role']) && $_SESSION['role']=='Admin'){
-     redirect('login/admin');
+   public function isOnline(){
+     if(empty($_SESSION['role']) && $_SESSION['role']=='Admin'){
+       redirect('login/admin');
+     }
    }
- }
     public function index(){
         $this->load->view('resources/header');
     	 $this->load->view('resources/navbar');

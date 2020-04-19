@@ -1,4 +1,4 @@
-<div class="containe-fluid px-3 ">
+<div class="container-fluid px-3 ">
 	<!-- <div class="row">
 		<div class="col-lg-3 d-none d-lg-block">
 			<ul class="list-group">
