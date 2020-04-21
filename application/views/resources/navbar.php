@@ -1,5 +1,5 @@
 <div class="row py-2 px-3">
-    <div class="col-12 col-md-4 pl-5 ">
+    <div class="col-12 col-md-4 pl-md-5 ">
       <h1 class="font-weight-bold text-primary">Lamu Delivery</h1>
     </div>
     <div class="col-12 col-md-8 ">
@@ -17,8 +17,8 @@
         </div>
         <div class="col-4">
           <ul class="nav justify-content-center ">
-            <li class="nav-item"><img src="<?php echo base_url().'uploads/icons/facebook.svg';?>" /></li>
-            <li class="nav-item"><img src="<?php echo base_url().'uploads/icons/facebook.svg';?>" /></li>
+            <li class="nav-item"><img src="<?php echo base_url().'uploads/icons/facebook.svg';?>" alt="Fb" /></li>
+            <li class="nav-item"><img src="<?php echo base_url().'uploads/icons/facebook.svg';?>" alt="Tb" /></li>
           <ul>
         </div>
       </div>

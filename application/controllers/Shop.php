@@ -22,7 +22,6 @@ class Shop extends CI_Controller
 	{
   		# code...
       $data['products']=$this->read_model->display();
-     // $data['categories']=$this->read_model->category();
       $data['cats']=$this->read_model->catsInProduct();
   		$this->load->view('resources/header');
   		$this->load->view('resources/navbar');

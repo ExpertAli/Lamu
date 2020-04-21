@@ -239,3 +239,53 @@ class Login extends CI_Controller
 	}
 
 }
+//email sending
+// $config = Array(
+// 	'protocol' => 'smtp',
+// 	'smtp_host' => 'ssl://smtp.googlemail.com',
+// 	'smtp_port' => 465,
+// 	'smtp_user' => 'testsourcecodester@gmail.com', // change it to yours
+// 	'smtp_pass' => 'mysourcepass', // change it to yours
+// 	'mailtype' => 'html',
+// 	'charset' => 'iso-8859-1',
+// 	'wordwrap' => TRUE
+// );
+
+// $this->load->library('email', $config);
+// $this->email->set_newline("\r\n");
+// $this->email->from($config['smtp_user']); // change it to yours
+// $this->email->to($email);// change it to yours
+// $this->email->subject($subject);
+// $this->email->message($message);
+// if($this->email->send()){
+//   $this->session->set_flashdata('message', 'Email sent');
+// }
+// else{
+//   $this->session->set_flashdata('message', show_error($this->email->print_debugger()));
+
+
+//workable from codeigniter
+// $config = Array(
+// 	'protocol' => 'smtp',
+// 	'smtp_host' => 'smtp.numericable.be',
+// 	'smtp_port' => 25,
+// 	'smtp_user' => '',
+// 	'smtp_pass' => '',
+// 	'mailtype'  => 'html',
+// 	'newline' =>"\r\n",
+// 	'charset'   => 'UTF-8'
+//  );
+ 
+//  $this->load->library('email', $config);
+ 
+//  $this->email->set_newline("\r\n");
+ 
+//  $this->email->from($mail, $nom);
+//  $this->email->to('******@outlook.com'); 
+ 
+//  $this->email->subject($sujet);
+//  $this->email->message(
+//  'Message: ' .$message. '<br>'
+//  );
+ 
+//  $this->email->send();
