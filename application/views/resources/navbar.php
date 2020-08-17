@@ -5,20 +5,24 @@
     <div class="col-12 col-md-8 ">
       <div class="row align-items-center">
         <div class="col-8 pt-2">
-         <?php echo form_open('shop/checkout','class="row"'); ?>
-            <div class="col-10 pr-0 form-group">
+         <?php echo form_open('shop/checkout','class="form"'); ?>
+            <div class="col-10 pr-0 input-group">
               <input type="search" name="product_search" class="form-control" placeholder="Search">
+			  <div class="input-group-append">
+    <span class="input-group-text" id="basic-addon2"><button type="submit" class=""><img src="<?php echo base_url().'uploads/search.svg';?>" alt="Q" width="16px" height="18px"/></button></span>
+  </div>
             </div>
-            <div class="col-2 px-0 form-group">
-              <button type="submit" class="btn btn-info"><img src="<?php echo base_url().'uploads/icons/facebook.svg';?>" /></button>
-            </div>
+           <!-- <div class="col-2 px-0 form-group">
+		   d-flex justify-content-between align-items-center
+              <button type="submit" class="btn btn-info"><img src="<?php echo base_url().'uploads/search.svg';?>" alt="Q" width="18px" height="18px"/></button>
+            </div> -->
 
           </form>
         </div>
         <div class="col-4">
           <ul class="nav justify-content-center ">
-            <li class="nav-item"><img src="<?php echo base_url().'uploads/icons/facebook.svg';?>" alt="Fb" /></li>
-            <li class="nav-item"><img src="<?php echo base_url().'uploads/icons/facebook.svg';?>" alt="Tb" /></li>
+            <li class="nav-item"><img src="<?php echo base_url().'uploads/search.svg';?>" alt="" width="18px" height="18px"/></li>
+            <li class="nav-item"><img src="<?php echo base_url().'uploads/search.svg';?>" alt="" width="18px" height="18px" /></li>
           <ul>
         </div>
       </div>
@@ -34,6 +38,17 @@
           <li class="nav-item font-weight-bold btn-outline-secondary"><a class="nav-link active" href="<?php echo base_url("shop/index"); ?>">Home</a></li>
           <li class="nav-item font-weight-bold btn-outline-secondary"><a class="nav-link active" href="<?php echo base_url("login/contact"); ?>">Contact</a></li>
           <li class="nav-item font-weight-bold btn-outline-secondary"><a class="nav-link active" href="<?php echo base_url("login/about"); ?>">About</a></li>
+         <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li> -->
             <?php  if(isset($_SESSION['id']) && $_SESSION['role']=='Admin'){
               echo '<li class="nav-item font-weight-bold btn-outline-secondary"><a class="nav-link active" href="'.base_url("client/view").'">Client</a></li>';
               echo '<li class="nav-item font-weight-bold btn-outline-secondary"><a class="nav-link active" href="'.base_url("stock/view").'">Mpesa</a></li>';
@@ -61,8 +76,9 @@
             </li>';
             echo '<li class="nav-item font-weight-bold btn-outline-secondary"><a class="nav-link active" href="'.base_url("login/resetpassword").'">Change Password</a></li>';
 
-            }elseif(isset($_SESSION['id']) && $_SESSION['role']=='Admin'){
+            }elseif(isset($_SESSION['id']) && $_SESSION['role']=='Client'){
           echo '<li class="nav-item font-weight-bold btn-outline-secondary"><a class="nav-link active" href="'.base_url("login/resetpassword").'">Change Password</a></li>';}?>
+          
       </ul>
       <!-- <ul class="nav navbar-nav nav-right">
         <ul class="nav-item btn-outline-secondary text-white">Hdfs</ul>
@@ -77,8 +93,8 @@
 
         echo '<a class="btn btn-info  mx-2" role="button" href="'.base_url("login/logout").'">Logout</a>';
       }else {
-
-        echo '<a class="font-weight-bold text-white" role="button" href="'.base_url("login/index").'">Log In</a>';
+       
+        echo '<a class="font-weight-bold btn btn-primary" role="button" href="'.base_url("login/index").'">Log In</a>';
         echo '<a class="btn btn-info  mx-2" role="button" href="'.base_url("login/signup").'">Sign Up</a>';
       }
 

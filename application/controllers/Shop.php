@@ -30,18 +30,24 @@ class Shop extends CI_Controller
 	}
   public function details($id)
 	{
-		# code...
-        $data['products']=$this->read_model->productDetails($id);
-        $data['images']=$this->read_model->productPics($id);
-        // $imgs= array();
-        // foreach ($data['products'] as $k) {
-        //   // code...
-        //   array_push($imgs, $data['products'][0]['id']);
-        // }
-    		$this->load->view('resources/header');
-    		$this->load->view('resources/navbar');
-    		$this->load->view('shop/details',$data);
-    		$this->load->view('resources/footer');
+    # code...
+    if(is_int($id)){
+      $data['products']=$this->read_model->productDetails($id);
+      $data['images']=$this->read_model->productPics($id);
+      // $imgs= array();
+      // foreach ($data['products'] as $k) {
+      //   // code...
+      //   array_push($imgs, $data['products'][0]['id']);
+      // }
+      $this->load->view('resources/header');
+      $this->load->view('resources/navbar');
+      $this->load->view('shop/details',$data);
+      $this->load->view('resources/footer');
+    }else{
+      
+      redirect('shop/index');
+    }
+       
 	}
 
   public function cart()

@@ -2,14 +2,14 @@
         <?php if(isset($_SESSION['feedback'])){
           echo '<div class="alert alert-success px-2">'.$_SESSION['feedback'].'</div>'; } ?>
           <?php
-           echo form_open('login/index',array('class' => 'px-2 px-lg-5 '));
+           echo form_open('login/forgot',array('class' => 'px-2 px-lg-5 '));
           ?>
             <h2 class="text-center">Forgot you Password</h2>
 
             <div class="form-group">
               <input class="border-primary form-control" type="email" name="email" placeholder="Email" value="<?php echo set_value('email'); ?>">
             </div>
-
+            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
             <div class="form-group my-2"><button class="btn btn-primary btn-block" type="submit">Submit</button></div>
         </form>
 </div>

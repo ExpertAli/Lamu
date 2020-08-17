@@ -90,7 +90,7 @@ class Login extends CI_Controller
 					 {
 						 // $this->session->set_flashdata('feedback', 'Your account has been created');
 						 // redirect(base_url().'login/signup');
-                $this->create_model->client();
+						$this->create_model->client();
 					 }
 
 	}
@@ -108,22 +108,25 @@ class Login extends CI_Controller
 				 }
 				 else
 				 {
-					 $client_data = $this->read_model->forgot();
-					 if(isset($client_data)){
-							 $this->load->library('email');
+					//  $client_data = $this->read_model->forgot();
+					//  if(isset($client_data)){
+					// 		 $this->load->library('email');
 
-							$this->email->from('no-reply@mexicoquality.com', 'Mexico Quality');
-							$this->email->to($client_data->email);
-							// $this->email->cc('another@another-example.com');
-							// $this->email->bcc('them@their-example.com');
+					// 		$this->email->from('no-reply@mexicoquality.com', 'Mexico Quality');
+					// 		$this->email->to($client_data->email);
+					// 		// $this->email->cc('another@another-example.com');
+					// 		// $this->email->bcc('them@their-example.com');
 
-							$this->email->subject('Password Reset');
-							$this->email->message('Testing the email class.');
+					// 		$this->email->subject('Password Reset');
+					// 		$this->email->message('Testing the email class.');
 
-							$this->email->send();
-							$this->session->set_flashdata('feedback', 'Check your email');
-	 					 redirect(base_url().'login/forgot');
-					 }
+					// 		$this->email->send();
+					// 		$this->session->set_flashdata('feedback', 'Check your email');
+	 				// 	 redirect(base_url().'login/forgot');
+					//  }
+					print_r($_POST);
+					echo $this->security->get_csrf_token_name();
+					echo $this->security->get_csrf_hash();
 				 }
 	}
 	
@@ -168,17 +171,41 @@ class Login extends CI_Controller
 				 }
 				 else
 				 {
-				     $email = \Config\Services::email();
+				    //  $email = \Config\Services::email();
                     
-                    $email->setFrom('no-reply@mexicoquality.co.ke', 'Mexico Quality Website');
-                    $email->setTo($this->input->post('email'));
-                    // $email->setCC('another@another-example.com');
-                    // $email->setBCC('them@their-example.com');
+                    // $email->setFrom('no-reply@mexicoquality.co.ke', 'Mexico Quality Website');
+                    // $email->setTo($this->input->post('email'));
+                    // // $email->setCC('another@another-example.com');
+                    // // $email->setBCC('them@their-example.com');
                     
-                    $email->setSubject('Email Test');
-                    $email->setMessage('Testing the email class.');
+                    // $email->setSubject('Email Test');
+                    // $email->setMessage('Testing the email class.');
                     
-                    $email->send();
+					// $email->send();
+					$config = Array(
+							'protocol' => 'smtp',
+							'smtp_host' => 'ssl://smtp.gmail.com',
+							'smtp_port' => '465', //25 for unsecured smtp
+							'smtp_user' => 'munawarali545@gmail.com',
+							'smtp_pass' => 'sz34g7CC4',
+							'mailtype'  => 'html',
+							'newline' => '\r\n',
+							'charset'   => 'UTF-8'
+						 );
+						 
+						 $this->load->library('email', $config);
+						 
+						 $this->email->set_newline("\r\n");
+						 
+						 $this->email->from('munawarali545@gmail.com');
+						 $this->email->to('ali@prideelectronics.co.ke'); 
+						 
+						 $this->email->subject('Trial SMTP');
+						 $this->email->message(
+						 'Message: Testing smtp<br>'
+						 );
+						 
+						 $this->email->send();
 
 					 $this->session->set_flashdata('feedback', 'We have received your email and we will get back to you. <br>Thank you for visiting our website');
 					 redirect(base_url().'login/contact');
@@ -267,7 +294,7 @@ class Login extends CI_Controller
 //workable from codeigniter
 // $config = Array(
 // 	'protocol' => 'smtp',
-// 	'smtp_host' => 'smtp.numericable.be',
+// 	'smtp_host' => 'ssl://smtp.gmail.com',
 // 	'smtp_port' => 25,
 // 	'smtp_user' => '',
 // 	'smtp_pass' => '',
